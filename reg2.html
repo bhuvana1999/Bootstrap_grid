@@ -1,0 +1,176 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <style>
+        * {
+            box-sizing: border-box
+        }
+
+        * {
+            background-color: honeydew
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        input[type=text],
+        input[type=password],
+        input[type=date] {
+            width: 75%;
+            padding: 15px;
+            margin: 5px 0 15px 0;
+            display: inline-block;
+            border: none;
+            background: whitesmoke;
+        }
+
+        .icon {
+            padding: 15px;
+            background: dodgerblue;
+            color: white;
+            min-width: 75px;
+            text-align: center;
+        }
+
+        .registerbtn {
+            background-color: dodgerblue;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+    </style>
+
+
+    <script>
+        function usernamecheck() {
+            var x = document.f1.username.value;
+            var a = /^[a-zA-Z0-9]{3,8}/;
+            if (x.match(a))
+                document.getElementById('g1').innerHTML = "valid";
+            else
+                document.getElementById('g1').innerHTML = "Invalid";
+        }
+        function namecheck() {
+            var x = document.f1.name.value;
+            var a = /^[A-Z]+[a-z]{3,20}/;
+            if (x.match(a))
+                document.getElementById('g2').innerHTML = "valid";
+            else
+                document.getElementById('g2').innerHTML = "Invalid";
+        }
+        function emailcheck() {
+            var x = document.f1.email.value;
+            var at = x.indexOf("@");
+            var dot = x.lastIndexOf(".");
+            if (at < 4 || dot < at + 5)
+                document.getElementById('g3').innerHTML = "Invalid";
+            else
+                document.getElementById('g3').innerHTML = "valid";
+        }
+        function passwordcheck() {
+            var x = document.f1.psw.value;
+            var a = /^[a-zA-Z0-9_$#&%*@]{8,16}/;
+            if (x.match(a))
+                document.getElementById('g4').innerHTML = "valid";
+            else
+                document.getElementById('g4').innerHTML = "Invalid";
+        }
+        function confirmpasswordcheck() {
+            var x = document.f1.psw.value;
+            var a = document.f1.cpsw.value;
+            if (x == a)
+                document.getElementById('g5').innerHTML = "valid";
+            else
+                document.getElementById('g5').innerHTML = "Invalid";
+        }
+        function numbercheck() {
+            var x = document.f1.number.value;
+            var a = /^[7,8,9]+[0-9]{9,9}/;
+            if (x.match(a))
+                document.getElementById('g6').innerHTML = "valid";
+            else
+                document.getElementById('g6').innerHTML = "Invalid";
+        }
+    </script>
+</head>
+
+<body>
+    <form name="f1" action="nextpage.html" onsubmit="registerbtn">
+        <center><b><big>Register</big></b></center><br> <br>
+        <center><i>Please fill in this form to create an account</i><br></center>
+        <div class="container">
+
+                <label for="username"><b>Username</b></label><br>
+                <i class="fa fa-user icon"></i> 
+               <input type="text" placeholder="Enter Username" name="username" required onkeyup="usernamecheck()">
+                <p id="g1"><br></p>
+
+
+                <label for="name"><b>Name</b></label>
+                <input type="text" placeholder="Enter name" name="name" required onkeyup="namecheck()">
+                <p id="g2"><br></p>
+
+                <label for="email"><b>Email</b></label><br>
+                <i class="fa fa-envelope icon"></i>
+                <input type="text" placeholder="Enter Email" name="email" required onkeyup="emailcheck()">
+                <p id="g3"><br></p>
+
+                <label for="psw"><b>Password</b></label><br>
+                <i class="fa fa-key icon"></i>
+                <input type="password" placeholder="Enter Password" name="psw" required onkeyup="passwordcheck()">
+                <p id="g4"><br></p>
+
+                <label for="cpsw"><b>Repeat Password</b></label><br>
+                <i class="fa fa-key icon"></i>
+                <input type="password" placeholder="Repeat Password" name="cpsw" required
+                    onkeyup="confirmpasswordcheck()">
+                <p id="g5"><br></p>
+
+                <label for="date"><b>DOB</b></label><br>
+                <input type="date" placeholder="mm/dd/yyyy"><br><br>
+
+                <label for="gender"><b>Gender</b></label><br>
+                <input type="radio" name="gender" value="male" checked>Male<br>
+                <input type="radio" name="gender" value="female">Female <br>
+                <input type="radio" name="gender" value="others">Others <br><br>
+
+                <label for="Languages known"><b>Languages known</b></label><br>
+                <input type="checkbox" name="Languages known" value="English" checked>English
+                <input type="checkbox" name="Languages known" value="Hindi">Hindi
+                <input type="checkbox" name="Languages known" value="Tamil">Tamil
+                <input type="checkbox" name="Languages known" value="telugu">Telugu<br><br>
+
+                <label for="number"><b>Contact number</b></label> 
+                <input type="tel" name="number" placeholder="phone number" required onkeyup="numbercheck()">
+                <p id="g6"><br></p>
+
+                <label for="Degree"><b>Qualification</b></label>
+                <select name="Degree" value="Degree">
+                    <option value="BE">BE</option>
+                    <option value="Btech">Btech</option>
+                    <option value="Bsc">Bsc</option>
+                </select><br>
+
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+                <button type="submit" name="registerbtn" class="registerbtn">Register</button>
+
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
